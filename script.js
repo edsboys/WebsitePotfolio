@@ -88,7 +88,7 @@ if (!isTouchDevice) {
 }
 
 // ---------------- TYPING EFFECT FOR INTRO ----------------
-const introText = "Software Developer | Aspiring Full Stack Engineer";
+const introText = "Software Developer | Full Stack Engineer";
 const introElement = document.querySelector(".section__text__p2");
 let idx = 0;
 
