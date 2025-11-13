@@ -1,245 +1,732 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mpho Matseka | Software Developer</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/png" href="./assets/logo.png">
-  </head>
 
-  <body>
-    <!-- NAVIGATION -->
-    <nav id="desktop-nav">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Mpho Matseka - Full-Stack Developer & AI/ML Engineer specializing in intelligent web applications">
+  <title>Mpho Matseka | Full-Stack & AI/ML Developer</title>
+
+  <link rel="icon" type="image/png" href="./assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav role="banner" id="navbar">
+    <div class="nav-container">
       <div class="logo">Mpho Matseka</div>
-      <div>
-        <ul class="nav-links">
+      <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- <main id="main"> -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Hi, I'm <span class="highlight">Mpho Matseka</span></h1>
+          <p class="subtitle">Software Developer</p>
+          <div class="typing-text-container" aria-live="polite">
+            <span class="typing-text"></span>
+          </div>
+          <p class="hero-description">
+            <!-- Content from your original "About" section -->
+            As a recent IT graduate from Vaal University of Technology, I specialize in building efficient, data-driven
+            applications with a focus on full-stack development.
+          </p>
+          <div class="cta-buttons">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+          </div>
+          <div class="social-proof">
+            <div class="proof-item">
+              <svg class="proof-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <!-- Content from your original "About" section -->
+              <span class="proof-text">Diploma in IT (Software Development)</span>
+            </div>
+            <div class="proof-item">
+              <svg class="proof-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <!-- Content from your original "About" text -->
+              <span class="proof-text">5+ Professional Certifications</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="profile-container">
+            <!-- UPDATE THIS SRC with your profile picture -->
+            <img src="./assets/about-pic.jpg" alt="Mpho Matseka" class="profile-img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="fade-in-section">
+      <div class="section-header">
+        <span class="section-tag">About Me</span>
+        <h2 class="section-title">Turning Ideas Into Impact</h2>
+        <p class="section-subtitle">
+          Recent IT graduate with a passion for building scalable, intelligent applications
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <!-- Updated from your projects list -->
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-card">
+          <!-- From your certifications -->
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Certifications Earned</div>
+        </div>
+        <div class="stat-card">
+          <!-- From your skills list -->
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Core Skills</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Commitment to Growth</div>
+        </div>
+      </div>
+
+      <div class="about-text-container">
+        <!-- Your original "About" text, expanded -->
+        <p>
+          As a recent graduate from <strong>Vaal University of Technology</strong>, I specialize in
+          building efficient, data-driven applications with a focus on <strong>full-stack development</strong>
+          and <strong>AI integration</strong>. My journey in tech is driven by curiosity and a desire
+          to solve real-world problems through code.
+        </p>
+        <p>
+          I've earned professional certifications from <strong>Oracle, IBM, and others</strong>,
+          and have hands-on experience building projects that demonstrate practical problem-solving skills.
+          I'm eager to join a forward-thinking team where I can contribute, learn, and grow as a developer.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills" class="fade-in-section">
+      <div class="section-header">
+        <span class="section-tag">Technical Skills</span>
+        <h2 class="section-title">What I Bring to the Table</h2>
+        <p class="section-subtitle">
+          A versatile skill set spanning frontend, backend, and AI/ML technologies
+        </p>
+      </div>
+
+      <div class="skills-container">
+        <!-- Skills from your "Experience" section -->
+        <div class="skill-category">
+          <h3 class="skill-category-title">
+            <svg class="skill-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+            </svg>
+            Frontend Development
+          </h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">HTML & CSS</span>
+                <span class="skill-level">Proficient</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="90"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">JavaScript</span>
+                <span class="skill-level">Intermediate</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="75"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">React</span>
+                <span class="skill-level">Intermediate</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="70"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">UI/UX & Tailwind CSS</span>
+                <span class="skill-level">Intermediate</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="75"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3 class="skill-category-title">
+            <svg class="skill-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01">
+              </path>
+            </svg>
+            Backend Development & Data
+          </h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Java</span>
+                <span class="skill-level">Intermediate</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="85"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Python</span>
+                <span class="skill-level">Intermediate</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="80"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Flask / Spring Boot</span>
+                <span class="skill-level">Beginner</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="70"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">SQL / PostgreSQL</span>
+                <span class="skill-level">Intermediate</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="75"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3 class="skill-category-title">
+            <svg class="skill-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+              </path>
+            </svg>
+            AI/ML & Tools
+          </h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-header">
+                <!-- Added from your project details -->
+                <span class="skill-name">Scikit-learn</span>
+                <span class="skill-level">Intermediate</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="70"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <!-- Added based on your projects -->
+                <span class="skill-name">AI/ML Concepts</span>
+                <span class="skill-level">Intermediate</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="65"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Git & GitHub</span>
+                <span class="skill-level">Proficient</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="90"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Problem Solving</span>
+                <span class="skill-level">Proficient</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="85"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications" class="fade-in-section">
+      <div class="section-header">
+        <span class="section-tag">Credentials</span>
+        <h2 class="section-title">Professional Certifications</h2>
+        <p class="section-subtitle">
+          Continuously learning and earning industry-recognized credentials
+        </p>
+      </div>
+
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-logo">OR</div>
+            <div class="cert-info">
+              <h3>Oracle Cloud Infrastructure Foundations</h3>
+              <p class="cert-issuer">Oracle</p>
+            </div>
+          </div>
+          <p class="cert-date">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            Issued Nov 2025
+          </p>
+          <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=3E208EA7D0162AACFC3D5EA1529B84ABF7CB509E47282E80ADBD34EE465C4AF5"
+            class="cert-link" target="_blank" rel="noopener noreferrer">
+            View Credential →
+          </a>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-logo">IBM</div>
+            <div class="cert-info">
+              <h3>IBM Full Stack Software Developer Professional Certificate</h3>
+              <p class="cert-issuer">IBM / Coursera</p>
+            </div>
+          </div>
+          <p class="cert-date">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            In Progress
+          </p>
+          <a href="https://www.coursera.org/professional-certificates/ibm-full-stack-cloud-developer?" class="cert-link" target="_blank" rel="noopener noreferrer">
+            View Credential →
+          </a>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-header">
+            <div class="cert-logo">CS</div>
+            <div class="cert-info">
+              <h3>IT & Networking Fundamentals</h3>
+              <p class="cert-issuer">Cisco Networking Academy</p>
+            </div>
+          </div>
+          <p class="cert-date">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            Issued July 2025
+          </p>
+          <a href="#" class="cert-link" target="_blank" rel="noopener noreferrer">
+            View Credential →
+          </a>
+        </div>
+
+
+      </div>
+    </section>
+
+    <section id="projects" class="fade-in-section">
+      <div class="section-header">
+        <span class="section-tag">Portfolio</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">
+          Real-world applications showcasing my technical skills and problem-solving abilities
+        </p>
+      </div>
+
+      <div class="projects-filter">
+        <button class="filter-btn active" data-filter="all" aria-label="Show all projects">All Projects</button>
+        <button class="filter-btn" data-filter="ai-ml" aria-label="Show AI and Machine Learning projects">AI/ML</button>
+        <button class="filter-btn" data-filter="fullstack" aria-label="Show full-stack projects">Full-Stack</button>
+        <button class="filter-btn" data-filter="java" aria-label="Show Java projects">Java</button>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 from your original code -->
+        <article class="project-card" data-category="ai-ml">
+          <img src="./assets/project-11.png"
+            alt="Dashboard interface showing Credit Card Fraud Detection analytics" 
+            class="project-image" loading="lazy">
+          
+          <div class="project-content">
+            <div class="project-header">
+              <div>
+                <h3 class="project-title">Credit Card Fraud Detection</h3>
+                <p class="project-date">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <time datetime="2025-10">October 2025</time>
+                </p>
+              </div>
+            </div>
+        
+            <p class="project-description">
+              Developed an AI-powered fraud detection system using Python, Scikit-learn, and Flask. 
+              The model analyzes 250K+ financial transactions and flags anomalies with an optimized recall of <strong>80.6%</strong>. 
+              Integrated a visual analytics dashboard for real-time fraud insights.
+            </p>
+        
+            <div class="project-metrics">
+              <div class="metric">
+                <span class="metric-value">80.6%</span>
+                <span class="metric-label">Recall</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">250K+</span>
+                <span class="metric-label">Records</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">3</span>
+                <span class="metric-label">Tech Stack</span>
+              </div>
+            </div>
+        
+            <div class="project-tags">
+              <span class="tag tag-ai">Python</span>
+              <span class="tag tag-ai">Scikit-learn</span>
+              <span class="tag tag-web">Flask</span>
+              <span class="tag tag-ai">Machine Learning</span>
+            </div>
+        
+            <div class="project-links">
+              <a href="https://github.com/BA-3-2-Mavuti/Credit-Card-Fraud-Detection" 
+                 class="project-link link-primary"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="View Credit Card Fraud Detection project on GitHub">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+                GitHub
+              </a>
+        
+              <a href="https://your-demo-link-here.com" 
+                 class="project-link link-secondary" 
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="View live demo of Credit Card Fraud Detection dashboard">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </article>
+        
+
+        <!-- Project 3 from your original code -->
+        <article class="project-card" data-category="fullstack ai-ml">
+          <img src="assets/Project-33.png" alt="Pitch Perfect AI Interface"
+            class="project-image">
+          <div class="project-content">
+            <div class="project-header">
+              <div>
+                <h3 class="project-title">Pitch Perfect AI</h3>
+                <p class="project-date">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  September 2025
+                </p>
+              </div>
+            </div>
+            <p class="project-description">
+              Pitch Perfect AI is a web app that analyzes your speech in real time using Google Gemini. It tracks
+              clarity, filler words, and pace, offering instant, actionable feedback.
+            </p>
+            <div class="project-metrics">
+              <div class="metric">
+                <span class="metric-value">Real-time</span>
+                <span class="metric-label">Analysis</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">Gemini</span>
+                <span class="metric-label">AI Powered</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">Live</span>
+                <span class="metric-label">Feedback</span>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span class="tag tag-web">React</span>
+              <span class="tag tag-web">Flask</span>
+              <span class="tag tag-ai">Python</span>
+              <span class="tag tag-ai">Google Gemini</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/edsboys/PitchPerfectAI/tree/master" class="project-link link-primary"
+                target="_blank" rel="noopener noreferrer" aria-label="View Pitch Perfect AI project on GitHub">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.840 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+                GitHub
+              </a>
+              <a href="#" class="project-link link-secondary demo-alert"
+                aria-label="View live demo of Pitch Perfect AI">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 from your original code -->
+        <article class="project-card" data-category="java">
+          <!-- UPDATE THIS SRC with your project image -->
+          <img src="assets\project-22.png"
+            alt="Student Records Management System Screenshot"
+            class="project-image">
+          <div class="project-content">
+            <div class="project-header">
+              <div>
+                <h3 class="project-title">Student Records Management System</h3>
+                <p class="project-date">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  June 2025
+                </p>
+              </div>
+            </div>
+            <p class="project-description">
+              Java GUI app built using AWT and ArrayLists for student data management, including search, highest mark,
+              and record count features.
+            </p>
+            <div class="project-metrics">
+              <div class="metric">
+                <span class="metric-value">Java</span>
+                <span class="metric-label">Language</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">AWT</span>
+                <span class="metric-label">Framework</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">CRUD</span>
+                <span class="metric-label">Ops</span>
+              </div>
+            </div>
+            <div class="project-tags">
+              <span class="tag">Java</span>
+              <span class="tag">AWT</span>
+              <span class="tag">Desktop App</span>
+            </div>
+            <div class="project-links">
+              <!-- Your original link was "https://github.com/edsboys" -->
+              <a href="https://github.com/edsboys" class="project-link link-primary" target="_blank"
+                rel="noopener noreferrer" aria-label="View Student Records project on GitHub">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.840 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+                GitHub
+              </a>
+              <!-- Your original link pointed to PitchPerfectAI, so I changed to an alert -->
+              <a href="#" class="project-link link-secondary demo-alert" aria-label="View live demo of Student Records">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="contact" class="fade-in-section">
+      <div class="section-header">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Let's Build Something Great</h2>
+        <p class="section-subtitle">
+          Ready to contribute to a forward-thinking team. Let's connect!
+        </p>
+      </div>
+
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <p>
+            Feel free to reach out via email, connect with me on LinkedIn, or check out my work on GitHub.
+          </p>
+          <div class="contact-methods">
+            <!-- Email from your original code -->
+            <a href="mailto:ehlersdanlosboy@gmail.com" class="contact-method">
+              <span class="contact-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                  </path>
+                </svg>
+              </span>
+              <span class="contact-details">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">ehlersdanlosboy@gmail.com</span>
+              </span>
+            </a>
+            <!-- LinkedIn from your original code -->
+            <a href="https://www.linkedin.com/in/mphomatseka/" class="contact-method" target="_blank"
+              rel="noopener noreferrer">
+              <span class="contact-icon">
+                <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </span>
+              <span class="contact-details">
+                <span class="contact-label">LinkedIn</span>
+                <span class="contact-value">linkedin.com/in/mphomatseka</span>
+              </span>
+            </a>
+            <!-- GitHub from your original code -->
+            <a href="https://github.com/edsboys" class="contact-method" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon">
+                <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.840 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+              </span>
+              <span class="contact-details">
+                <span class="contact-label">GitHub</span>
+                <span class="contact-value">github.com/edsboys</span>
+              </span>
+            </a>
+          </div>
+          <!-- CV Button from your original code -->
+          <a href="./assets/Mpho_Matseka_CV_Professional.pdf" class="btn btn-secondary contact-cv-btn" target="_blank"
+            rel="noopener noreferrer">
+            View My CV
+          </a>
+        </div>
+
+        <div class="contact-form-container">
+          <h3>Send Me a Message</h3>
+
+          <form action="#" method="POST">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-about">
+        <h3>Mpho Matseka</h3>
+        <p>Full-Stack Developer & AI/ML Engineer passionate about building efficient, data-driven applications.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/mphomatseka/" class="social-link" aria-label="LinkedIn" target="_blank"
+            rel="noopener noreferrer">
+            <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+            </svg>
+          </a>
+          <a href="https://github.com/edsboys" class="social-link" aria-label="GitHub" target="_blank"
+            rel="noopener noreferrer">
+            <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.840 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
           <li><a href="#about">About</a></li>
-          <li><a href="#experience">Skills</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#certifications">Certifications</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
-    </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Mpho Matseka</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <ul>
-            <li><a href="#about" onclick="toggleMenu()">About</a></li>
-            <li><a href="#experience" onclick="toggleMenu()">Skills</a></li>
-            <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-          </ul>
-        </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:ehlersdanlosboy@gmail.com">Email Me</a></li>
+          <!-- <li><a href="#">Set up a call</a></li> -->
+        </ul>
       </div>
-    </nav>
-
-    <!-- PROFILE SECTION -->
-    <section id="profile">
-      <div class="section__pic-container">
-        <img src="./assets/profile-pic.jpg" alt="Mpho Matseka profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hey there, I'm</p>
-        <h1 class="title">Mpho Matseka</h1>
-        <p class="section__text__p2">Software Developer | Aspiring Full Stack Engineer</p>
-        <div class="btn-container">
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
-          </button>
-        </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/mphomatseka/'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/edsboys'"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <div class="section__pic-container">
-          <img src="./assets/about-pic.jpg" alt="Profile picture" class="about-pic" />
-        </div>
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img src="./assets/experience.png" alt="Experience icon" class="icon" />
-              <h3>Experience</h3>
-              <p>Hands-on project experience in<br />Software & AI Development</p>
-            </div>
-            <div class="details-container">
-              <img src="./assets/education.png" alt="Education icon" class="icon" />
-              <h3>Education</h3>
-              <p>Diploma in Information Technology<br />Vaal University of Technology (Software Development)</p>
-            </div>
-          </div>
-          <div class="text-container">
-            <p>
-              As a recent IT graduate from Vaal University of Technology, I specialize in building efficient, data-driven applications with a focus on full-stack development. My project experience and professional certifications from Oracle, IBM, and others have equipped me with a strong foundation in AI, cloud technologies, and cybersecurity. I am eager to apply my skills to create impactful software solutions and contribute to a forward-thinking team.
-            </p>
-          </div>
-        </div>
-      </div>
-      <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#experience'" />
-    </section>
-
-    <!-- EXPERIENCE / SKILLS -->
-    <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Skills</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Frontend Development</h2>
-            <div class="article-container">
-              <article><img src="./assets/checkmark.png" class="icon" title="Checkmark Icon" /><div><h3>HTML & CSS</h3><p>Proficient</p></div></article>
-              <article><img src="./assets/checkmark.png" class="icon" title="Checkmark Icon" /><div><h3>JavaScript</h3><p>Intermediate</p></div></article>
-              <article><img src="./assets/checkmark.png" class="icon" title="Checkmark Icon" /><div><h3>React</h3><p>Intermediate</p></div></article>
-              <article><img src="./assets/checkmark.png" class="icon" title="Checkmark Icon" /><div><h3>UI/UX & Tailwind CSS</h3><p>Intermediate</p></div></article>
-            </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Backend Development & Data</h2>
-            <div class="article-container">
-              <article><img src="./assets/checkmark.png" class="icon" title="Checkmark Icon" /><div><h3>Java</h3><p>Proficient</p></div></article>
-              <article><img src="./assets/checkmark.png" class="icon" title="Checkmark Icon" /><div><h3>Python</h3><p>Intermediate</p></div></article>
-              <article><img src="./assets/checkmark.png" class="icon" title="Checkmark Icon" /><div><h3>Flask / Spring Boot</h3><p>Intermediate</p></div></article>
-              <article><img src="./assets/checkmark.png" class="icon" title="Checkmark Icon" /><div><h3>SQL / PostgreSQL</h3><p>Intermediate</p></div></article>
-              <article><img src="./assets/checkmark.png" class="icon" title="Checkmark Icon" /><div><h3>Git / GitHub</h3><p>Proficient</p></div></article>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#projects'" />
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img src="./assets/project-11.png" alt="Credit Card Fraud Detection" class="project-img" />
-            </div>
-            <h2 class="experience-sub-title project-title">Credit Card Fraud Detection</h2>
-            <div class="skill-tags">
-              <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Flask</span><span class="tag">AI/ML</span>
-            </div>
-            <p>AI-powered fraud detection model built using Python, Scikit-learn, and Flask, with visual analytics integration for anomaly detection.</p>
-            <div class="btn-container">
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/BA-3-2-Mavuti/Credit-Card-Fraud-Detection'">
-                Github
-              </button>
-              <button class="btn btn-color-2 project-btn" onclick="alert('Live demo not available yet.')">
-                Live Demo
-              </button>
-            </div>
-          </div>
-
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img src="./assets/project-22.png" alt="Student Management System" class="project-img" />
-            </div>
-            <h2 class="experience-sub-title project-title">Student Records Management System</h2>
-            <div class="skill-tags">
-              <span class="tag">Java</span><span class="tag">AWT</span>
-            </div>
-            <p>Java GUI app built using AWT and ArrayLists for student data management, including search, highest mark, and record count features.</p>
-            <div class="btn-container">
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/edsboys'">
-                Github
-              </button>
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://edsboys.github.io/PitchPerfectAI/'">
-                Live Demo
-              </button>
-            </div>
-          </div>
-
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img src="./assets/Project-33.png" alt="Pitch Perfect AI" class="project-img" />
-            </div>
-            <h2 class="experience-sub-title project-title">Pitch Perfect AI</h2>
-             <div class="skill-tags">
-              <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">React</span><span class="tag">Google Gemini</span>
-            </div>
-            <p>Pitch Perfect AI is a web app that analyzes your speech in real time using Google Gemini. It tracks clarity, filler words, and pace, offering instant, actionable feedback to boost public speaking skills.</p>
-            <div class="btn-container">
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/edsboys/PitchPerfectAI/tree/master'">
-                Github
-              </button>
-              <button class="btn btn-color-2 project-btn" onclick="alert('Live demo not available yet.')">
-                Live Demo
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#contact'" />
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <p class="section__text__p1">Ready to build something great together?</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img src="./assets/email.png" alt="Email icon" class="icon contact-icon email-icon" />
-          <p><a href="mailto:ehlersdanlosboy@gmail.com">ehlersdanlosboy@gmail.com</a></p>
-        </div>
-        <div class="contact-info-container">
-          <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon" />
-          <p><a href="https://www.linkedin.com/in/mphomatseka/">LinkedIn</a></p>
-        </div>
-        <div class="contact-info-container">
-          <img src="./assets/github.png" alt="GitHub icon" class="icon contact-icon" />
-          <p><a href="https://github.com/edsboys">GitHub</a></p>
-        </div>
-      </div>
-       <div class="btn-container">
-        <!-- TODO: Replace with the correct path to your CV -->
-        <button class="btn btn-color-1" onclick="window.open('./assets/YOUR_CV.pdf')">
-          View My CV
-        </button>
-      </div>
-    </section>
-
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
+    </div>
+    <div class="footer-bottom">
       <p>Copyright &#169; 2025 Mpho Matseka. All Rights Reserved.</p>
-    </footer>
+    </div>
+  </footer>
 
-    <script src="script.js"></script>
-  </body>
+  <button id="scrollTop" aria-label="Scroll to top">
+    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+    </svg>
+  </button>
+  <script src="script.js"></script>
+</body>
+
 </html>

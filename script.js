@@ -1,106 +1,183 @@
-// ---------------- HAMBURGER MENU ----------------
-const hamburgerIcon = document.querySelector(".hamburger-icon");
-const menuLinks = document.querySelector(".menu-links");
-
-function toggleMenu() {
-  if (!menuLinks || !hamburgerIcon) return;
-  menuLinks.classList.toggle("open");
-  hamburgerIcon.classList.toggle("open");
-}
-
-// Close menu on outside click
-document.addEventListener("click", (e) => {
-  if (!menuLinks || !hamburgerIcon) return;
-  if (!menuLinks.contains(e.target) && !hamburgerIcon.contains(e.target)) {
-    menuLinks.classList.remove("open");
-    hamburgerIcon.classList.remove("open");
+document.addEventListener("DOMContentLoaded", () => {
+      
+  // --- 1. NAVIGATION (HAMBURGER & SCROLL) ---
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
+  const navLinksItems = document.querySelectorAll(".nav-links a");
+  const navbar = document.getElementById("navbar");
+  
+  // Toggle mobile menu
+  function toggleMenu() {
+    hamburger.classList.toggle("active");
+    navLinks.classList.toggle("active");
+    const isExpanded = hamburger.classList.contains("active");
+    hamburger.setAttribute("aria-expanded", isExpanded);
+    document.body.style.overflow = isExpanded ? "hidden" : "";
   }
-});
-
-if (hamburgerIcon) hamburgerIcon.addEventListener("click", toggleMenu);
-
-// ---------------- SMOOTH SCROLL ----------------
-const navLinks = document.querySelectorAll('a[href^="#"]');
-
-navLinks.forEach(link => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
-    const target = document.querySelector(link.getAttribute("href"));
-    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+  
+  hamburger.addEventListener("click", toggleMenu);
+  
+  // Close menu when a link is clicked
+  navLinksItems.forEach(link => {
+    link.addEventListener("click", () => {
+      if (navLinks.classList.contains("active")) {
+        toggleMenu();
+      }
+    });
   });
-});
-
-// ---------------- SCROLL ANIMATION ----------------
-const sections = document.querySelectorAll("section");
-
-sections.forEach(section => section.classList.add("hidden"));
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      entry.target.classList.remove("hidden");
+  
+  // Close menu on outside click
+  document.addEventListener("click", (e) => {
+    if (
+      navLinks.classList.contains("active") &&
+      !navLinks.contains(e.target) &&
+      !hamburger.contains(e.target)
+    ) {
+      toggleMenu();
     }
   });
-}, { threshold: 0.1 });
-
-sections.forEach(section => observer.observe(section));
-
-// ---------------- SCROLL TO TOP BUTTON ----------------
-const scrollBtn = document.createElement("div");
-scrollBtn.id = "scrollToTop";
-scrollBtn.textContent = "↑";
-scrollBtn.style.cssText = `
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  background: black;
-  color: white;
-  padding: 1rem;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.5rem;
-  z-index: 9999;
-  display: none;
-  text-align: center;
-  transition: all 0.3s ease;
-`;
-document.body.appendChild(scrollBtn);
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 400) scrollBtn.style.display = "block";
-  else scrollBtn.style.display = "none";
-});
-
-scrollBtn.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-// ---------------- PROJECT HOVER EFFECTS ----------------
-const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-
-if (!isTouchDevice) {
-  const projectCards = document.querySelectorAll(".color-container");
-  projectCards.forEach(card => {
-    card.addEventListener("mouseenter", () => card.classList.add("hovered"));
-    card.addEventListener("mouseleave", () => card.classList.remove("hovered"));
+  
+  // Add shadow to navbar on scroll
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
   });
-}
+  
+  // --- 2. SCROLL TO TOP BUTTON ---
+  const scrollTopBtn = document.getElementById("scrollTop");
+  
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+      scrollTopBtn.classList.add("visible");
+    } else {
+      scrollTopBtn.classList.remove("visible");
+    }
+  });
+  
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 
-// ---------------- TYPING EFFECT FOR INTRO ----------------
-const introText = "Software Developer | Full Stack Engineer";
-const introElement = document.querySelector(".section__text__p2");
-let idx = 0;
+  // --- 3. TYPING EFFECT ---
+  const typingElement = document.querySelector(".typing-text");
+  const roles = [
+    "Full-Stack Engineer",
+    "AI/ML Enthusiast",
+    "Software Developer",
+    "Problem Solver"
+  ];
+  let roleIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
 
-function typeIntro() {
-  if (!introElement) return;
-  introElement.textContent = introText.slice(0, idx);
-  idx++;
-  if (idx <= introText.length) setTimeout(typeIntro, 50);
-}
+  function type() {
+    if (!typingElement) return;
+    
+    const currentRole = roles[roleIndex];
+    let typeSpeed = 100;
 
-typeIntro();
+    if (isDeleting) {
+      // Deleting
+      typingElement.textContent = currentRole.substring(0, charIndex - 1);
+      charIndex--;
+      typeSpeed = 50;
+    } else {
+      // Typing
+      typingElement.textContent = currentRole.substring(0, charIndex + 1);
+      charIndex++;
+      typeSpeed = 100;
+    }
 
-// ---------------- FUN CONSOLE MESSAGE ----------------
-console.log("%cHey there! 👋 Welcome to Mpho Matseka's portfolio.", 
-  "color: #ff6600; font-size: 18px; font-weight: bold;");
+    if (!isDeleting && charIndex === currentRole.length) {
+      // Pause at end of word
+      typeSpeed = 2000;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      // Finished deleting
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      typeSpeed = 500;
+    }
+
+    setTimeout(type, typeSpeed);
+  }
+  
+  type(); // Start the typing effect
+
+  // --- 4. ANIMATE ON SCROLL (Sections & Skills) ---
+  const scrollObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        
+        // Specific logic for skill bars
+        if (entry.target.id === "skills") {
+          const skillBars = entry.target.querySelectorAll(".skill-progress");
+          skillBars.forEach(bar => {
+            bar.style.width = bar.dataset.progress + "%";
+          });
+        }
+        
+        // Animate project cards
+        if (entry.target.id === "projects") {
+           const projectCards = entry.target.querySelectorAll(".project-card");
+           projectCards.forEach((card, index) => {
+             setTimeout(() => {
+               card.classList.add("visible");
+             }, index * 100); // Stagger the animation
+           });
+        }
+        
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  // Observe all sections with the class
+  document.querySelectorAll(".fade-in-section").forEach(section => {
+    scrollObserver.observe(section);
+  });
+  
+  // --- 5. PROJECT FILTERING ---
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+  
+  filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter;
+      
+      // Update button active state
+      filterButtons.forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+      
+      // Filter projects
+      projectCards.forEach(card => {
+        const categories = card.dataset.category;
+        if (filter === "all" || categories.includes(filter)) {
+          card.style.display = "flex";
+          card.classList.add("visible");
+        } else {
+          card.style.display = "none";
+          card.classList.remove("visible");
+        }
+      });
+    });
+  });
+
+  // --- 6. DEMO ALERT (from your original code) ---
+  const demoAlertLinks = document.querySelectorAll(".demo-alert");
+  demoAlertLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      alert('Live demo not available yet.');
+    });
+  });
+
+  // --- 7. FUN CONSOLE MESSAGE (from your original code) ---
+  console.log("%cHey there! 👋 Welcome to Mpho Matseka's portfolio.", 
+    "color: #6366f1; font-size: 18px; font-weight: bold;");
+  
+});
