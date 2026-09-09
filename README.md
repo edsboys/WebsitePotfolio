@@ -28,6 +28,8 @@ The primary reading and contact flows work without JavaScript. The mobile menu i
 
 Keep the website aligned with the actual project repositories. IdentityGuard uses Python/FastAPI with a Java client. Credit Card Fraud Detection is a VUT team project; the linked repository credits Mpho as team lead.
 
+Student Grade Calculator is a separate Java web and DevOps team assessment, linked to `edsboys/student-grade-calculator`. Its README credits Mpho as CI Engineer and Git Lead. The project card describes the checked-in tools and workflows without claiming all tests pass or attributing the entire team's implementation to one person. Its SVG is a project illustration, not an application screenshot.
+
 Only show demo or credential buttons when there is an actual destination. Student Records currently offers an email enquiry because its specific source repository is not confirmed. The Cisco entry has no credential button until a verification URL is supplied. The IBM entry remains marked in progress and links to the programme, not an earned credential.
 
 Avoid self-rated percentage bars and unsupported totals. Update credential status only when completion is confirmed.
