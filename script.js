@@ -72,3 +72,90 @@ if (copyButton && copyStatus && navigator.clipboard?.writeText) {
 }
 const year = document.querySelector("#year");
 if (year) year.textContent = String(new Date().getFullYear());
+
+// Motion enhances visible content; nothing depends on an animation to appear.
+(() => {
+  if (!Element.prototype.animate || !("IntersectionObserver" in window)) return;
+  const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const active = new Map();
+  const seen = new WeakSet();
+  const targets = document.querySelectorAll(
+    ".section-heading, .project, .skill, .credential, .badge-card, .about-copy, .contact-panel",
+  );
+  let observer;
+
+  function reveal(element, delay = 0, distance = 20) {
+    if (preference.matches || element.contains(document.activeElement)) return;
+    active.get(element)?.cancel();
+    const animation = element.animate(
+      [
+        { opacity: 0.4, transform: `translateY(${distance}px)` },
+        { opacity: 1, transform: "translateY(0)" },
+      ],
+      { duration: 620, delay, fill: "backwards", easing: "cubic-bezier(0.22, 1, 0.36, 1)" },
+    );
+    active.set(element, animation);
+    const cleanup = () => {
+      if (active.get(element) === animation) active.delete(element);
+    };
+    animation.addEventListener("finish", cleanup, { once: true });
+    animation.addEventListener("cancel", cleanup, { once: true });
+  }
+
+  function observeSections() {
+    observer?.disconnect();
+    if (preference.matches) return;
+    observer = new IntersectionObserver(
+      (entries) => {
+        let stagger = 0;
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          observer.unobserve(entry.target);
+          if (seen.has(entry.target)) continue;
+          seen.add(entry.target);
+          reveal(entry.target, Math.min(stagger++ * 55, 165));
+        }
+      },
+      { threshold: 0.06, rootMargin: "0px 0px -24px 0px" },
+    );
+    targets.forEach((element) => {
+      if (!seen.has(element)) observer.observe(element);
+    });
+  }
+
+  if (!location.hash || location.hash === "#home") {
+    document.querySelectorAll(".hero-copy > *, .portrait").forEach((element, i) => {
+      reveal(element, Math.min(i * 35, 175), 12);
+    });
+  }
+  observeSections();
+  preference.addEventListener("change", () => {
+    active.forEach((animation) => animation.cancel());
+    active.clear();
+    observeSections();
+  });
+  // Never delay a keyboard user reaching a link within an animated card.
+  document.addEventListener("focusin", (event) => {
+    active.forEach((animation, element) => {
+      if (element.contains(event.target)) animation.cancel();
+    });
+  });
+  document.querySelectorAll(".additional-credentials").forEach((details) => {
+    details.addEventListener("toggle", () => {
+      const content = details.querySelector(".badge-groups");
+      if (!content) return;
+      if (details.open) reveal(content, 0, 8);
+      else active.get(content)?.cancel();
+    });
+  });
+  menuButton?.addEventListener("click", () => {
+    if (menuButton.getAttribute("aria-expanded") === "true") {
+      reveal(navigation, 0, -6);
+    } else {
+      active.get(navigation)?.cancel();
+    }
+  });
+  window.addEventListener("beforeprint", () => {
+    active.forEach((animation) => animation.cancel());
+  });
+})();
