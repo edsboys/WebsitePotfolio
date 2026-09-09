@@ -1,183 +1,161 @@
-document.addEventListener("DOMContentLoaded", () => {
-      
-  // --- 1. NAVIGATION (HAMBURGER & SCROLL) ---
-  const hamburger = document.querySelector(".hamburger");
-  const navLinks = document.querySelector(".nav-links");
-  const navLinksItems = document.querySelectorAll(".nav-links a");
-  const navbar = document.getElementById("navbar");
-  
-  // Toggle mobile menu
-  function toggleMenu() {
-    hamburger.classList.toggle("active");
-    navLinks.classList.toggle("active");
-    const isExpanded = hamburger.classList.contains("active");
-    hamburger.setAttribute("aria-expanded", isExpanded);
-    document.body.style.overflow = isExpanded ? "hidden" : "";
+// Progressive enhancement: navigation and contact links also work without JS.
+const menuButton = document.querySelector(".menu-toggle");
+const navigation = document.querySelector("#site-navigation");
+const navContainer = document.querySelector(".nav-container");
+const mobileViewport = window.matchMedia("(max-width: 900px)");
+
+if (menuButton && navigation && navContainer) {
+  function setMenuOpen(open, restoreFocus = false) {
+    menuButton.setAttribute("aria-expanded", String(open));
+    navigation.classList.toggle("is-open", open);
+    const label = menuButton.querySelector(".menu-label");
+    if (label) label.textContent = open ? "Close" : "Menu";
+    if (restoreFocus) menuButton.focus();
   }
-  
-  hamburger.addEventListener("click", toggleMenu);
-  
-  // Close menu when a link is clicked
-  navLinksItems.forEach(link => {
-    link.addEventListener("click", () => {
-      if (navLinks.classList.contains("active")) {
-        toggleMenu();
+  menuButton.hidden = false;
+  navContainer.classList.add("menu-enabled");
+  menuButton.addEventListener("click", () =>
+    setMenuOpen(menuButton.getAttribute("aria-expanded") !== "true"),
+  );
+  navigation.addEventListener("click", (event) => {
+    const link = event.target.closest("a");
+    if (!link) return;
+    setMenuOpen(false);
+    if (mobileViewport.matches && link.hash) {
+      const target = document.querySelector(link.hash);
+      if (target) {
+        // Do not leave keyboard focus in a hidden menu after navigation.
+        target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+        target.addEventListener(
+          "blur",
+          () => target.removeAttribute("tabindex"),
+          { once: true },
+        );
       }
-    });
+    }
   });
-  
-  // Close menu on outside click
-  document.addEventListener("click", (e) => {
+  document.addEventListener("keydown", (event) => {
     if (
-      navLinks.classList.contains("active") &&
-      !navLinks.contains(e.target) &&
-      !hamburger.contains(e.target)
-    ) {
-      toggleMenu();
+      event.key === "Escape" &&
+      menuButton.getAttribute("aria-expanded") === "true"
+    )
+      setMenuOpen(false, true);
+  });
+  document.addEventListener("click", (event) => {
+    if (!navContainer.contains(event.target)) setMenuOpen(false);
+  });
+  navContainer.addEventListener("focusout", (event) => {
+    if (!navContainer.contains(event.relatedTarget)) setMenuOpen(false);
+  });
+  mobileViewport.addEventListener("change", () => {
+    const focusWouldBeHidden =
+      mobileViewport.matches && navigation.contains(document.activeElement);
+    setMenuOpen(false, focusWouldBeHidden);
+  });
+}
+
+const copyButton = document.querySelector(".copy-email");
+const copyStatus = document.querySelector(".copy-status");
+if (copyButton && copyStatus && navigator.clipboard?.writeText) {
+  copyButton.hidden = false;
+  copyButton.addEventListener("click", async () => {
+    copyStatus.textContent = "";
+    try {
+      await navigator.clipboard.writeText(copyButton.dataset.email);
+      copyStatus.textContent = "Email address copied.";
+    } catch {
+      copyStatus.textContent =
+        "Could not copy automatically. Select the email address above to copy it.";
     }
   });
-  
-  // Add shadow to navbar on scroll
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-  });
-  
-  // --- 2. SCROLL TO TOP BUTTON ---
-  const scrollTopBtn = document.getElementById("scrollTop");
-  
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 400) {
-      scrollTopBtn.classList.add("visible");
-    } else {
-      scrollTopBtn.classList.remove("visible");
-    }
-  });
-  
-  scrollTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+}
+const year = document.querySelector("#year");
+if (year) year.textContent = String(new Date().getFullYear());
 
-  // --- 3. TYPING EFFECT ---
-  const typingElement = document.querySelector(".typing-text");
-  const roles = [
-    "Full-Stack Engineer",
-    "AI/ML Enthusiast",
-    "Software Developer",
-    "Problem Solver"
-  ];
-  let roleIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
+// Motion enhances visible content; nothing depends on an animation to appear.
+(() => {
+  if (!Element.prototype.animate || !("IntersectionObserver" in window)) return;
+  const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const active = new Map();
+  const seen = new WeakSet();
+  const targets = document.querySelectorAll(
+    ".section-heading, .project, .skill, .credential, .badge-card, .about-copy, .contact-panel",
+  );
+  let observer;
 
-  function type() {
-    if (!typingElement) return;
-    
-    const currentRole = roles[roleIndex];
-    let typeSpeed = 100;
-
-    if (isDeleting) {
-      // Deleting
-      typingElement.textContent = currentRole.substring(0, charIndex - 1);
-      charIndex--;
-      typeSpeed = 50;
-    } else {
-      // Typing
-      typingElement.textContent = currentRole.substring(0, charIndex + 1);
-      charIndex++;
-      typeSpeed = 100;
-    }
-
-    if (!isDeleting && charIndex === currentRole.length) {
-      // Pause at end of word
-      typeSpeed = 2000;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      // Finished deleting
-      isDeleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-      typeSpeed = 500;
-    }
-
-    setTimeout(type, typeSpeed);
+  function reveal(element, delay = 0, distance = 20) {
+    if (preference.matches || element.contains(document.activeElement)) return;
+    active.get(element)?.cancel();
+    const animation = element.animate(
+      [
+        { opacity: 0.4, transform: `translateY(${distance}px)` },
+        { opacity: 1, transform: "translateY(0)" },
+      ],
+      { duration: 620, delay, fill: "backwards", easing: "cubic-bezier(0.22, 1, 0.36, 1)" },
+    );
+    active.set(element, animation);
+    const cleanup = () => {
+      if (active.get(element) === animation) active.delete(element);
+    };
+    animation.addEventListener("finish", cleanup, { once: true });
+    animation.addEventListener("cancel", cleanup, { once: true });
   }
-  
-  type(); // Start the typing effect
 
-  // --- 4. ANIMATE ON SCROLL (Sections & Skills) ---
-  const scrollObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        
-        // Specific logic for skill bars
-        if (entry.target.id === "skills") {
-          const skillBars = entry.target.querySelectorAll(".skill-progress");
-          skillBars.forEach(bar => {
-            bar.style.width = bar.dataset.progress + "%";
-          });
+  function observeSections() {
+    observer?.disconnect();
+    if (preference.matches) return;
+    observer = new IntersectionObserver(
+      (entries) => {
+        let stagger = 0;
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          observer.unobserve(entry.target);
+          if (seen.has(entry.target)) continue;
+          seen.add(entry.target);
+          reveal(entry.target, Math.min(stagger++ * 55, 165));
         }
-        
-        // Animate project cards
-        if (entry.target.id === "projects") {
-           const projectCards = entry.target.querySelectorAll(".project-card");
-           projectCards.forEach((card, index) => {
-             setTimeout(() => {
-               card.classList.add("visible");
-             }, index * 100); // Stagger the animation
-           });
-        }
-        
-        observer.unobserve(entry.target);
-      }
+      },
+      { threshold: 0.06, rootMargin: "0px 0px -24px 0px" },
+    );
+    targets.forEach((element) => {
+      if (!seen.has(element)) observer.observe(element);
     });
-  }, { threshold: 0.1 });
+  }
 
-  // Observe all sections with the class
-  document.querySelectorAll(".fade-in-section").forEach(section => {
-    scrollObserver.observe(section);
+  if (!location.hash || location.hash === "#home") {
+    document.querySelectorAll(".hero-copy > *, .portrait").forEach((element, i) => {
+      reveal(element, Math.min(i * 35, 175), 12);
+    });
+  }
+  observeSections();
+  preference.addEventListener("change", () => {
+    active.forEach((animation) => animation.cancel());
+    active.clear();
+    observeSections();
   });
-  
-  // --- 5. PROJECT FILTERING ---
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const projectCards = document.querySelectorAll(".project-card");
-  
-  filterButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      const filter = button.dataset.filter;
-      
-      // Update button active state
-      filterButtons.forEach(btn => btn.classList.remove("active"));
-      button.classList.add("active");
-      
-      // Filter projects
-      projectCards.forEach(card => {
-        const categories = card.dataset.category;
-        if (filter === "all" || categories.includes(filter)) {
-          card.style.display = "flex";
-          card.classList.add("visible");
-        } else {
-          card.style.display = "none";
-          card.classList.remove("visible");
-        }
-      });
+  // Never delay a keyboard user reaching a link within an animated card.
+  document.addEventListener("focusin", (event) => {
+    active.forEach((animation, element) => {
+      if (element.contains(event.target)) animation.cancel();
     });
   });
-
-  // --- 6. DEMO ALERT (from your original code) ---
-  const demoAlertLinks = document.querySelectorAll(".demo-alert");
-  demoAlertLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      alert('Live demo not available yet.');
+  document.querySelectorAll(".additional-credentials").forEach((details) => {
+    details.addEventListener("toggle", () => {
+      const content = details.querySelector(".badge-groups");
+      if (!content) return;
+      if (details.open) reveal(content, 0, 8);
+      else active.get(content)?.cancel();
     });
   });
-
-  // --- 7. FUN CONSOLE MESSAGE (from your original code) ---
-  console.log("%cHey there! 👋 Welcome to Mpho Matseka's portfolio.", 
-    "color: #6366f1; font-size: 18px; font-weight: bold;");
-  
-});
+  menuButton?.addEventListener("click", () => {
+    if (menuButton.getAttribute("aria-expanded") === "true") {
+      reveal(navigation, 0, -6);
+    } else {
+      active.get(navigation)?.cancel();
+    }
+  });
+  window.addEventListener("beforeprint", () => {
+    active.forEach((animation) => animation.cancel());
+  });
+})();

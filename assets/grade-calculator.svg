@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" rx="16" fill="#241747"/>
+  <g font-family="Arial, sans-serif">
+    <text x="52" y="66" font-size="18" letter-spacing="3" fill="#cec1ef">JAVA / DEVOPS</text>
+    <text x="52" y="122" font-size="38" font-weight="700" fill="#fff">Student Grade</text>
+    <text x="52" y="168" font-size="38" font-weight="700" fill="#fff">Calculator</text>
+    <rect x="52" y="209" width="330" height="142" rx="12" fill="#3b2868"/>
+    <rect x="402" y="209" width="346" height="142" rx="12" fill="#3b2868"/>
+    <text x="78" y="248" font-size="20" fill="#e3d9f7">Semester mark</text>
+    <text x="78" y="319" font-size="56" font-weight="700" fill="#fff">40%</text>
+    <text x="428" y="248" font-size="20" fill="#e3d9f7">Exam mark</text>
+    <text x="428" y="319" font-size="56" font-weight="700" fill="#fff">60%</text>
+    <path d="M52 383h696" stroke="#6a5496"/>
+    <text x="52" y="433" font-size="22" fill="#e3d9f7">Build</text>
+    <path d="M130 426h56m-8-7 8 7-8 7" fill="none" stroke="#bca6e9" stroke-width="2"/>
+    <text x="205" y="433" font-size="22" fill="#e3d9f7">Test</text>
+    <path d="M276 426h56m-8-7 8 7-8 7" fill="none" stroke="#bca6e9" stroke-width="2"/>
+    <text x="351" y="433" font-size="22" fill="#e3d9f7">Package</text>
+    <path d="M458 426h56m-8-7 8 7-8 7" fill="none" stroke="#bca6e9" stroke-width="2"/>
+    <text x="533" y="433" font-size="22" fill="#e3d9f7">Deploy</text>
+  </g>
+</svg>
